@@ -111,8 +111,9 @@ public class strassen {
 
 		for(int i = 0; i < n; i++){
 			for(int j = 0; j < n; j++){
-				System.out.print(product[i][j] + "\n");
+				System.out.print(product[i][j] + " ");
 			}
+			System.out.println();
 		}
 		return product;
 
@@ -146,22 +147,21 @@ public class strassen {
 
 	public static void main(String[] args){
 
-		int [] l1 = {1, 1, 1, 1};
-		int [] l2 = {1, 1, 1, 1};
-		int [] l3 = {1, 1, 1, 1};
-		int [] l4 = {1, 1, 1, 1};
-		int [][] test = {l1, l2, l3, l4};
-		int [][] ok = strassen(test, test);
-		System.out.println(ok[0][0]); 
+		int [] l1 = {1, 1};
+		int [] l2 = {1, 1};
+		//int [] l3 = {1, 1, 1, 1};
+		//int [] l4 = {1, 1, 1, 1};
+		int [][] test = {l1, l2};
+
 		int[][] product;
 		product = strassen(test, test);
 
-		for(int i = 0; i < 4; i++){
+		/*for(int i = 0; i < 4; i++){
 			for(int j = 0; j < 4; j++){
 				System.out.print(product[i][j]);
 			}
 
-		}
+		}*/
 
 	}
 }
