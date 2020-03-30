@@ -39,7 +39,7 @@ public class strassen {
 	linstInner.add()
 	*/
 	public static int[][] strassen(int[][] mat1, int[][] mat2) {
-		System.out.print("hi");
+
 		int n = mat1.length;
 		int[][] product = new int[n][n];
 
@@ -148,9 +148,9 @@ public class strassen {
 
 		int [] l1 = {1, 1, 1, 1};
 		int [] l2 = {1, 1, 1, 1};
-		//int [] l3 = [1, 1, 1, 1];
-		//int [] l4 = [1, 1, 1, 1];
-		int [][] test = {l1, l2};
+		int [] l3 = {1, 1, 1, 1};
+		int [] l4 = {1, 1, 1, 1};
+		int [][] test = {l1, l2, l3, l4};
 		int [][] ok = strassen(test, test);
 		System.out.println(ok[0][0]); 
 		int[][] product;
