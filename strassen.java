@@ -1,10 +1,10 @@
 import java.util.Arrays;
-import java.util.ArrayList; 
+import java.util.ArrayList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
 
-public class Strassen {
+public class strassen {
 
 	public int[][] naive(int [][] matrix1, int [][] matrix2, int n){
 
@@ -15,7 +15,7 @@ public class Strassen {
 
             for(int j = 0; j < 3; j++){
 
-								//find
+								// find entries per row
                 result[i][j]=0;
 
                 for(int k = 0; k < 3; k++)
@@ -29,7 +29,7 @@ public class Strassen {
 						// print newline for next row
             System.out.println();
         }
-        return result; 
+        return result;
 
 	}
 	/*
@@ -61,15 +61,15 @@ public class Strassen {
 			// Splits mat1 and mat2 into 4 parts each
 			for (int i = 0; i < (n/2); i++) {
 				for (int j = 0; j < (n/2); j++){
-					a[i][j] = mat1[i][j]; 
-					b[i][j] = mat1[i][j + n/2]; 
-					c[i][j] = mat1[i + n/2][j]; 
-					d[i][j] = mat1[i + n/2][j + n/2]; 
+					a[i][j] = mat1[i][j];
+					b[i][j] = mat1[i][j + n/2];
+					c[i][j] = mat1[i + n/2][j];
+					d[i][j] = mat1[i + n/2][j + n/2];
 
 					e[i][j] = mat2[i][j];
 					f[i][j] = mat2[i][j + n/2];
-					g[i][j] = mat2[i + n/2][j]; 
-					h[i][j] = mat2[i + n/2][j + n/2]; 
+					g[i][j] = mat2[i + n/2][j];
+					h[i][j] = mat2[i + n/2][j + n/2];
 
 
 				}
@@ -100,16 +100,19 @@ public class Strassen {
 
 			for (int i = 0; i < (n/2); i++) {
 				for(int j = 0; j < n/2; j++) {
-					product[i][j] = first[i][j]; 
-					product[i][j + n/2] = second[i][j]; 
-					product[i + n/2][j] = third[i][j]; 
-					product[i + n/2][j + n/2] = fourth[i][j]; 
+					product[i][j] = first[i][j];
+					product[i][j + n/2] = second[i][j];
+					product[i + n/2][j] = third[i][j];
+					product[i + n/2][j + n/2] = fourth[i][j];
 				}
 			}
 		}
 
-
-
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < n; j++){
+				System.out.print(product[i][j]);
+			}
+		}
 		return product;
 
 
@@ -141,7 +144,12 @@ public class Strassen {
     }
 
 
+
 	public void main(){
+
+
+	public void main(String[] args){
+
 		int [] l1 = {1, 1, 1, 1};
 		int [] l2 = {1, 1, 1, 1};
 		//int [] l3 = [1, 1, 1, 1];
@@ -149,6 +157,15 @@ public class Strassen {
 		int [][] test = {l1, l2};
 		int [][] ok = strassen(test, test);
 		System.out.println(ok[0][0]); 
+		int[][] product;
+		product = strassen(test, test);
+
+		for(int i = 0; i < 4; i++){
+			for(int j = 0; j < 4; j++){
+				System.out.print(product[i][j]);
+			}
+
+		}
 
 	}
 }
