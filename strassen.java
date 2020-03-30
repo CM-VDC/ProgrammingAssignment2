@@ -1,11 +1,12 @@
-import org.apache.commons.lang3.ArrayUtils;
+//
 
 import java.util.Arrays;
-import java.
+import java.util.*;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class Strassen {
+public class strassen {
 
-	public int[][] naive(){
+	public int[][] naive(int n, int[][] matrix1, int[][]matrix2){
 
 		int result[][]=new int[3][3];
 
@@ -14,7 +15,7 @@ public class Strassen {
 
             for(int j = 0; j < 3; j++){
 
-								//find
+								// find entries per row
                 result[i][j]=0;
 
                 for(int k = 0; k < 3; k++)
