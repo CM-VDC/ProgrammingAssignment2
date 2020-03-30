@@ -15,10 +15,10 @@ public class Strassen {
 
             for(int j = 0; j < 3; j++){
 
-								//find 
+								//find
                 result[i][j]=0;
 
-                for(int k = 0; k < 3;k++)
+                for(int k = 0; k < 3; k++)
                 {
                     result[i][j] += matrix1[i][k] * matrix2[k][j];
                 }
