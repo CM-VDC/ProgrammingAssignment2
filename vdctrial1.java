@@ -1,13 +1,9 @@
 
 
 public class Strassen {
-	
-	public int[][] matrixmult() {
-
-	}
 
 
-	public naive(){
+	public int[][] naive(){
 
 	}
 	/*
@@ -21,7 +17,7 @@ public class Strassen {
 		int[][] product = new int[dim][dim]; 
 
 		if (mat1.length == 1) {
-			product[0][0] = mat1[0][0] * mat2[0][0] ; 
+			product[0][0] = mat1[0][0] * mat2[0][0]; 
 		}
 
 		else {
@@ -63,7 +59,7 @@ public class Strassen {
 		int [][] first = add(subtract(add(p5, p4), p2), p2); 
 		int [][] second =  add(p1, p2); 
 		int [][] third = add(p3, p4); 
-		int [][] fourth = subtract(subtract(add(p5, p1), p3), p7)
+		int [][] fourth = subtract(subtract(add(p5, p1), p3), p7); 
 		
 		for (int i = 0; i < (n/2); i++) {
 			product[i] = ArrayUtils.addAll(first[i], second[i]); 
@@ -82,7 +78,7 @@ public class Strassen {
 
     	for (int i = 0; i < dim; i++) {
     		for (int j = 0; j < dim; j++) {
-    			sum[i][j] = mat1[i][j] + mat2[i][j]
+    			sum[i][j] = mat1[i][j] + mat2[i][j]; 
     		}	
     	}
     	return sum; 
@@ -94,7 +90,7 @@ public class Strassen {
 
     	for (int i = 0; i < dim; i++) {
     		for (int j = 0; j < dim; j++) {
-    			diff[i][j] = mat1[i][j] - mat2[i][j]
+    			diff[i][j] = mat1[i][j] - mat2[i][j]; 
     		}	
     	}
     	return diff; 
