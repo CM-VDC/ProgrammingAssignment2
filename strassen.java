@@ -1,12 +1,24 @@
+<<<<<<< HEAD
 //
 
 import java.util.Arrays;
 import java.util.*;
 import org.apache.commons.lang3.ArrayUtils;
+=======
+import java.util.Arrays;
+import java.util.ArrayList; 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.*;
+>>>>>>> 4b16ad7fd9c1aa65431d63c2bc2ea2656d7f3683
 
 public class strassen {
 
+<<<<<<< HEAD
 	public int[][] naive(int n, int[][] matrix1, int[][]matrix2){
+=======
+	public int[][] naive(int [][] matrix1, int [][] matrix2, int n){
+>>>>>>> 4b16ad7fd9c1aa65431d63c2bc2ea2656d7f3683
 
 		int result[][]=new int[3][3];
 
@@ -20,7 +32,7 @@ public class strassen {
 
                 for(int k = 0; k < 3; k++)
                 {
-                    result[i][j] += matrix1[i][k] * matrix2[k][j];
+                    result[i][j] += (matrix1[i][k] * matrix2[k][j]);
                 }
 
                 // printing current matrix element
@@ -29,6 +41,7 @@ public class strassen {
 						// print newline for next row
             System.out.println();
         }
+        return result; 
 
 	}
 	/*
@@ -59,14 +72,27 @@ public class strassen {
 
 			// Splits mat1 and mat2 into 4 parts each
 			for (int i = 0; i < (n/2); i++) {
-				a[i] = mat1.get(i).subList(0, n/2);
-				b[i] = mat1.get(i).subList(n/2, n);
-				e[i] = mat2.get(i).subList(0, n/2);
-				f[i] = mat2.get(i).subList(n/2, n);
-				c[i] = mat1.get(n/2 + i).subList(0, n/2);
-				d[i] = mat1.get(n/2 + i).subList(n/2, n);
-				g[i] = mat2.get(n/2 + i).subList(0, n/2);
-				h[i] = mat2.get(n/2 + i).subList(n/2, n);
+				for (int j = 0; j < (n/2); j++){
+					a[i][j] = mat1[i][j]; 
+					b[i][j] = mat1[i][j + n/2]; 
+					c[i][j] = mat1[i + n/2][j]; 
+					d[i][j] = mat1[i + n/2][j + n/2]; 
+
+					e[i][j] = mat2[i][j];
+					f[i][j] = mat2[i][j + n/2];
+					g[i][j] = mat2[i + n/2][j]; 
+					h[i][j] = mat2[i + n/2][j + n/2]; 
+
+
+				}
+				/*a[i] = mat1[i].subList(0, n/2);
+				b[i] = mat1[i].subList(n/2, n);
+				e[i] = mat2[i].subList(0, n/2);
+				f[i] = mat2[i].subList(n/2, n);
+				c[i] = mat1[n/2 + i].subList(0, n/2);
+				d[i] = mat1[n/2 + i].subList(n/2, n);
+				g[i] = mat2[n/2 + i].subList(0, n/2);
+				h[i] = mat2[n/2 + i].subList(n/2, n); */
 
 			}
 			int [][] p1 = strassen(a, subtract(f, h));
@@ -85,8 +111,12 @@ public class strassen {
 			int [][] fourth = subtract(subtract(add(p5, p1), p3), p7);
 
 			for (int i = 0; i < (n/2); i++) {
-				product[i] = ArrayUtils.addAll(first[i], second[i]);
-				product[n/2 + i] = ArrayUtils.addAll(third[i], fourth[i]);
+				for(int j = 0; j < n/2; j++) {
+					product[i][j] = first[i][j]; 
+					product[i][j + n/2] = second[i][j]; 
+					product[i + n/2][j] = third[i][j]; 
+					product[i + n/2][j + n/2] = fourth[i][j]; 
+				}
 			}
 		}
 
