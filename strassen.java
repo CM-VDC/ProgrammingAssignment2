@@ -1,13 +1,12 @@
-import org.apache.commons.lang3.ArrayUtils;
-
 import java.util.Arrays;
 import java.util.ArrayList; 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.*;
 
 public class Strassen {
 
-	public int[][] naive(int [][] matrix1, int [][] matrix2){
+	public int[][] naive(int [][] matrix1, int [][] matrix2, int n){
 
 		int result[][]=new int[3][3];
 
@@ -30,6 +29,7 @@ public class Strassen {
 						// print newline for next row
             System.out.println();
         }
+        return result; 
 
 	}
 	/*
@@ -60,14 +60,27 @@ public class Strassen {
 
 			// Splits mat1 and mat2 into 4 parts each
 			for (int i = 0; i < (n/2); i++) {
-				a[i] = mat1[i].subList(0, n/2);
+				for (int j = 0; j < (n/2); j++){
+					a[i][j] = mat1[i][j]; 
+					b[i][j] = mat1[i][j + n/2]; 
+					c[i][j] = mat1[i + n/2][j]; 
+					d[i][j] = mat1[i + n/2][j + n/2]; 
+
+					e[i][j] = mat2[i][j];
+					f[i][j] = mat2[i][j + n/2];
+					g[i][j] = mat2[i + n/2][j]; 
+					h[i][j] = mat2[i + n/2][j + n/2]; 
+
+
+				}
+				/*a[i] = mat1[i].subList(0, n/2);
 				b[i] = mat1[i].subList(n/2, n);
 				e[i] = mat2[i].subList(0, n/2);
 				f[i] = mat2[i].subList(n/2, n);
 				c[i] = mat1[n/2 + i].subList(0, n/2);
 				d[i] = mat1[n/2 + i].subList(n/2, n);
 				g[i] = mat2[n/2 + i].subList(0, n/2);
-				h[i] = mat2[n/2 + i].subList(n/2, n);
+				h[i] = mat2[n/2 + i].subList(n/2, n); */
 
 			}
 			int [][] p1 = strassen(a, subtract(f, h));
