@@ -6,7 +6,7 @@ import java.util.*;
 
 public class strassen {
 
-	public int[][] naive(int [][] matrix1, int [][] matrix2, int n){
+	public static int[][] naive(int [][] matrix1, int [][] matrix2, int n){
 
 		int result[][]=new int[3][3];
 
@@ -38,7 +38,8 @@ public class strassen {
 	ArrayList<Object> listInner = new ArrayList();
 	linstInner.add()
 	*/
-	public int[][] strassen(int[][] mat1, int[][] mat2) {
+	public static int[][] strassen(int[][] mat1, int[][] mat2) {
+		System.out.print("hi");
 		int n = mat1.length;
 		int[][] product = new int[n][n];
 
@@ -110,7 +111,7 @@ public class strassen {
 
 		for(int i = 0; i < n; i++){
 			for(int j = 0; j < n; j++){
-				System.out.print(product[i][j]);
+				System.out.print(product[i][j] + "\n");
 			}
 		}
 		return product;
@@ -119,7 +120,7 @@ public class strassen {
 	}
 
 	// Matrix Addition Function
-    public int[][] add(int[][] mat1, int[][] mat2){
+    public static int[][] add(int[][] mat1, int[][] mat2){
     	int dim = mat1.length;
     	int[][] sum = new int[dim][dim];
 
@@ -131,7 +132,7 @@ public class strassen {
     	return sum;
     }
 
-    public int[][] subtract(int[][] mat1, int[][] mat2){
+    public static int[][] subtract(int[][] mat1, int[][] mat2){
     	int dim = mat1.length;
     	int[][] diff = new int[dim][dim];
 
@@ -143,12 +144,7 @@ public class strassen {
     	return diff;
     }
 
-
-
-	public void main(){
-
-
-	public void main(String[] args){
+	public static void main(String[] args){
 
 		int [] l1 = {1, 1, 1, 1};
 		int [] l2 = {1, 1, 1, 1};
@@ -169,3 +165,4 @@ public class strassen {
 
 	}
 }
+
