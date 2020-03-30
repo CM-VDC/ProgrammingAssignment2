@@ -141,14 +141,14 @@ public class Strassen {
     }
 
 
-
 	public void main(){
 		int [] l1 = {1, 1, 1, 1};
 		int [] l2 = {1, 1, 1, 1};
 		//int [] l3 = [1, 1, 1, 1];
 		//int [] l4 = [1, 1, 1, 1];
 		int [][] test = {l1, l2};
-		strassen(test, test);
+		int [][] ok = strassen(test, test);
+		System.out.println(ok[0][0]); 
 
 	}
 }
