@@ -51,11 +51,13 @@ public class strassen {
 		}
 		else {
 
+			// 1 by 1 matrix multiplication 
 			if (mat1.length == 1) {
 				product[0][0] = mat1[0][0] * mat2[0][0];
 			}
 
 			else {
+				// Divide each matrix into 4 parts  
 				int [][] a = new int[n/2][n/2];
 				int [][] b = new int[n/2][n/2];
 				int [][] c = new int[n/2][n/2];
@@ -64,10 +66,8 @@ public class strassen {
 				int [][] f = new int[n/2][n/2];
 				int [][] g = new int[n/2][n/2];
 				int [][] h = new int[n/2][n/2];
-				// also consider just having empty lists and then adding to them
-				// in the funciton rather than indexing through them
-
-				// Splits mat1 and mat2 into 4 parts each
+				
+				// Populates divided matrices 
 				for (int i = 0; i < (n/2); i++) {
 					for (int j = 0; j < (n/2); j++){
 						a[i][j] = mat1[i][j];
@@ -80,19 +80,11 @@ public class strassen {
 						g[i][j] = mat2[i + n/2][j];
 						h[i][j] = mat2[i + n/2][j + n/2];
 
-
 					}
-					/*a[i] = mat1[i].subList(0, n/2);
-					b[i] = mat1[i].subList(n/2, n);
-					e[i] = mat2[i].subList(0, n/2);
-					f[i] = mat2[i].subList(n/2, n);
-					c[i] = mat1[n/2 + i].subList(0, n/2);
-					d[i] = mat1[n/2 + i].subList(n/2, n);
-					g[i] = mat2[n/2 + i].subList(0, n/2);
-					h[i] = mat2[n/2 + i].subList(n/2, n); */
 
 				}
 				
+				// 7 multiplications required for strassens 
 				int [][] p1 = strassen(a, subtract(f, h), k);
 				int [][] p2 = strassen(add(a, b), h, k);
 				int [][] p3 = strassen(add(c, d), e, k);
@@ -101,14 +93,7 @@ public class strassen {
 				int [][] p6 = strassen(subtract(b, d), add(g, h), k);
 				int [][] p7 = strassen(subtract(a, c), add(e, f), k);
 				
-
-				// Resulting quadrants, first being the upper left and second the upper
-				// right
-				/*int [][] first = add(subtract(add(strassen(add(a, d), add(e, h)), strassen(d, subtract(g, e))), strassen(add(a, b), h)), strassen(subtract(b, d), add(g, h)));
-				int [][] second =  add(strassen(a, subtract(f, h)), strassen(add(a, b), h));
-				int [][] third = add(strassen(add(c, d), e), strassen(d, subtract(g, e), ));
-				int [][] fourth = subtract(subtract(add(strassen(add(a, d), add(e, h)), strassen(a, subtract(f, h))), strassen(add(c, d), e)), strassen(subtract(a, c), add(e, f)));
-				*/
+				// Multiplies split components 
 				int [][] first = add(subtract(add(p5, p4), p2), p6);
 				int [][] second =  add(p1, p2);
 				int [][] third = add(p3, p4);
@@ -151,6 +136,7 @@ public class strassen {
     	return sum;
     }
 
+    // Matrix Subtraction Function
     public int[][] subtract(int[][] mat1, int[][] mat2){
     	int dim = mat1.length;
     	int[][] diff = new int[dim][dim];
@@ -163,10 +149,12 @@ public class strassen {
     	return diff;
     }
 
+    // Function used to determine matrix breaking point
     public int test1(int[][] mat1, int [][] mat2, int dim, int k, long time, int breakpt) {
     	
-
+    	// Check if tested dimension exceeds dimension of matrix
     	if (k > dim) {
+    		// Default "Breaking Point" is 2 
     		if (breakpt == 2) {
     			System.out.println("n0 not found. ");
     		}
@@ -195,7 +183,9 @@ public class strassen {
 			}
 			*/
 			System.out.println("n: " + k);
+			// Start timer 
 			long start1 = System.nanoTime(); 
+			// Run strassen
 			int [][] product = strassen(mat1, mat2, k);
 			long end1 = System.nanoTime(); 
 			long elapsed1 = end1 - start1; 
