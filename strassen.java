@@ -210,6 +210,63 @@ public class strassen {
 	    }
     	
     }
+    public int[][] generateRandomMat(int n, double p){
+
+		// create empty matrix of size n
+		int dim = n;
+		int [][] mat = new int[dim][dim];
+
+		// populate matrix with 0s and 1's based off given probability p
+    	for (int i = 0; i < dim; i++) {
+	    	for (int j = 0; j < dim; j++){
+					// generate random number for probability
+					double rand1 = Math.random();
+
+					// to prevent edges that come from same vertex and point to same vertex
+					if (i == j){
+
+					  mat[i][j] = 0;
+
+					}
+					// if p is less than or equal to rand
+    			else if (rand1 <= p) {
+
+    				mat[i][j] = 1;
+
+    			}
+    			else {
+    				mat[i][j] = 0;
+    			}
+
+    		}
+    	}
+
+	return mat;
+	}
+
+    public int numTriangles(int p){
+
+		// generate random matrix
+		int [][] randomMat = generateRandomMat(1024, p);
+
+
+		// variable to store sum of diagonal entries
+		int addDiagonal = 0;
+
+		// find cube of random matrix
+		int [][] randomMatSq = strassen(randomMat, randomMat, 1024);
+		int [][] randomMatCube = strassen (randomMatSq, randomMat, 1024);
+
+		// find total of diagonals of the cubed matrix
+		for(int i = 0; i < 1024; i++){
+
+			addDiagonal =+ randomMatCube[i][i];
+		}
+
+		int numTriangles = addDiagonal/6;
+
+		return numTriangles;
+	}
 
 	public static void main(String[] args) throws FileNotFoundException{
 		/*int dim = 1024;
