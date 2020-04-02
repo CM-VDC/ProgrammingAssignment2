@@ -47,7 +47,7 @@ public class strassen {
 		int[][] product = new int[n][n];
 		
 		if (k == n) {
-			naive(mat1, mat2); 
+			product = naive(mat1, mat2); 
 		}
 		else {
 
@@ -132,9 +132,9 @@ public class strassen {
 				System.out.print(product[i][j] + " ");
 			}
 			System.out.println();
-		}*/
+		} */
 		return product;
-
+		
 
 	}
 
@@ -174,7 +174,7 @@ public class strassen {
     			System.out.println("Optimal Breakpoint: " + breakpt);
     		}
     		
-    		return 0; 
+    		return breakpt;  
     	}
     	else {
     		
@@ -216,13 +216,13 @@ public class strassen {
 			else
 				test1(mat1, mat2, dim, k*2, time, breakpt);
 				
-			return dim; 
+			return breakpt; 
 	    }
     	
     }
 
 	public static void main(String[] args) throws FileNotFoundException{
-		int dim = 1024;
+		/*int dim = 1024;
 		int [][] mat1 = new int[dim][dim]; 
     	int [][] mat2 = new int[dim][dim]; 
 
@@ -245,6 +245,7 @@ public class strassen {
 	    			}
 	    		} 
     		}
+		*/
 
 		/*int [] l1 = {2, 1, 4, 7};
 		int [] l2 = {4, 6, 7, 100};
@@ -279,25 +280,59 @@ public class strassen {
 			}
 			System.out.println();
 		} */
-	int dimension = Integer.parseInt(args[1]); 
+	int dim = Integer.parseInt(args[1]); 
 	Scanner scn = new Scanner(new File(args[2]));
 
     int size = scn.nextInt(); 
     int [] array = new int[size]; 
-    Scanner hi = new Scanner(new File(args[2]));
+    Scanner input = new Scanner(new File(args[2]));
     
     /*for (int i = 0; i < size; i ++ ) {
     	int j = hi.nextInt(); 
     	System.out.println("this is a test: " + j);
     }*/
-
-    while(hi.hasNextInt())
-	{
-   		int j = hi.nextInt();
-   		System.out.println("this is a test: " + j);
+    int [][] mat1 = new int[dim][dim]; 
+    int [][] mat2 = new int[dim][dim];
+    int d2 = dim*dim;  
+    while(input.hasNextInt()) {
+    	int i = 0; 
+		for (int j = 0; j < 2*dim; j++) {
+			for (int k = 0; k < dim; k++) {
+				if (i < d2) {
+					mat1[j][k] = input.nextInt(); 
+				}
+				else{
+					//System.out.println("hiiii");
+					mat2[j-dim][k] = input.nextInt();
+				}
+				i++; 
+			}
+		}
     }
 
-		/*strassen s = new strassen();
+    System.out.println("Matrix 1: "); 
+	    	for(int i = 0; i < dim; i++){
+				for(int j = 0; j < dim; j++){
+					System.out.print(mat1[i][j] + " ");
+				}
+				System.out.println();
+			}
+	System.out.println("Matrix 2: "); 
+	    	for(int i = 0; i < dim; i++){
+				for(int j = 0; j < dim; j++){
+					System.out.print(mat2[i][j] + " ");
+				}
+				System.out.println();
+			}
+    
+
+    /*while(input.hasNextInt())
+	{
+   		int j = input.nextInt();
+   		System.out.println("this is a test: " + j);
+    }
+    */
+		strassen s = new strassen();
 		
 		int k = 2; 
 		long start2 = System.nanoTime(); 
@@ -305,7 +340,22 @@ public class strassen {
 			long end2 = System.nanoTime(); 
 		long elapsed2 = end2 - start2; 
 		System.out.println("Naive takes " + elapsed2 + " nanoseconds"); 
-		int result = s.test1(mat1, mat2, dim, k, elapsed2, k); */
+		int testing = s.test1(mat1, mat2, dim, k, elapsed2, k);
+		System.out.println("Resulting matrix: ");
+		
+		int [][] result = s.strassen(mat1, mat2, testing);
+
+
+		for (int i = 0; i < dim; i++) {
+			for (int j = 0; j < dim; j++) {
+				if (i == j) {
+					System.out.print(result[i][j] + " "); 
+				}
+				System.out.print(" "); 
+			}
+			System.out.println();
+
+		}
 		
 
 	}
